@@ -14,11 +14,11 @@ class CodeHighlight(Extension):
     def parse(self, parser):
         lineno = parser.stream.next().lineno
 
-        # get language
-        try:
+        # get language, if set
+        if parser.stream.current.test('string'):  # no lang supplied
             args = [parser.parse_expression()]
-        except:
-            args = ['string', 'text']  # don't highlight syntax, just format it
+        else:  # format as plain text
+            args = [nodes.Const(None)]
 
         body = parser.parse_statements(['name:endsyntax'], drop_needle=True)
 
@@ -28,7 +28,10 @@ class CodeHighlight(Extension):
     def _pygmentize(self, name, caller):
         self.options = {}
 
-        lexer = get_lexer_by_name(name)
+        try:
+            lexer = get_lexer_by_name(name)
+        except ValueError:
+            lexer = TextLexer()
         content = caller()
 
         # Fetch the defaults

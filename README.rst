@@ -52,7 +52,16 @@ single quotes in the tag to HTML entities.
 
 A workaround or fix is currently #TODO.
 
+
+License
+-------
+
+As this work conveys modified source from `Pelican`_ itself, it is licensed
+under the same terms; The GNU Affero General Public License, v3.
+
+
 .. _`Jinja2`: http://jinja.pocoo.org/
 .. _`Pygments`: http://pygments.org/
 .. _`html_jinja2`: https://github.com/mattoc/html_jinja2
 .. _`Typogrify`: https://github.com/mintchaos/typogrify
+.. _`Pelican`: https://github.com/getpelican/pelican

@@ -52,6 +52,18 @@ single quotes in the tag to HTML entities.
 
 A workaround or fix is currently #TODO.
 
+Gotchas
+-------
+
+If you have a code snippet in an article that uses Jinja2 or Django
+template syntax you'll need to encapsulate it with the ``{% raw %}``
+block tag, lest it also parse (or break on) your sample code::
+
+  {% syntax 'html' %}
+  {% raw %}{% block content %}
+  <h2>Test</h2>
+  {% endblock content %}{% endraw %}
+  {% endsyntax %}
 
 License
 -------
